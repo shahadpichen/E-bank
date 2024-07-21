@@ -10,7 +10,7 @@ import Footer from "./components/footer";
 import Uplifting from "./components/uplifting";
 import Services from "./components/services";
 
-function page() {
+function Page() {
   useEffect(() => {
     const allSections = document.querySelectorAll(".section");
 
@@ -52,4 +52,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

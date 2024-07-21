@@ -8,15 +8,7 @@ import CloseAccount from "./close-account";
 import RequestLoan from "./request-loan";
 import useUser from "@/app/hook/useUser";
 
-interface Transaction {
-  id: number;
-  created_at: string;
-  created_by: string;
-  money: number;
-  type: string;
-  owner: string;
-  recipient: string;
-}
+import { Transaction } from "@/app/types";
 
 interface Props {
   transactions: Transaction[];
@@ -25,11 +17,13 @@ interface Props {
 function Personal(props: Props) {
   const { isFetching, data } = useUser();
 
+  // Filter and map transactions
   const filteredTransactions = props.transactions.filter((transaction) => {
     return !(
       transaction.type === "deposit" && transaction.owner !== data?.display_name
     );
   });
+
   const newTransaction = filteredTransactions
     .map((transaction) => {
       if (
@@ -46,7 +40,8 @@ function Personal(props: Props) {
       }
       return null;
     })
-    .filter((transaction) => transaction !== null);
+    .filter((transaction): transaction is Transaction => transaction !== null);
+
   console.log(newTransaction);
 
   const [totalDeposits, setTotalDeposits] = useState<number>(0);
@@ -61,13 +56,13 @@ function Personal(props: Props) {
   });
 
   useEffect(() => {
-    const calculateTotalAmounts = (newTransaction: Transaction[]) => {
-      const totalDeposits = newTransaction
-        .filter((transaction) => transaction?.type === "deposit")
+    const calculateTotalAmounts = (transactions: Transaction[]) => {
+      const totalDeposits = transactions
+        .filter((transaction) => transaction.type === "deposit")
         .reduce((sum, transaction) => sum + transaction.money, 0);
 
-      const totalWithdrawals = newTransaction
-        .filter((transaction) => transaction?.type === "withdrawal")
+      const totalWithdrawals = transactions
+        .filter((transaction) => transaction.type === "withdrawal")
         .reduce((sum, transaction) => sum + transaction.money, 0);
 
       return {

@@ -13,11 +13,13 @@ function Uplifting() {
         <h2 className="text-white text-3xl md:text-6xl font-bold text-center">
           The Best Banking <br /> service for You
         </h2>
-        <p className="text-white text-sm md:text-xl max-w-xl mt-6 text-center">
-          We are able to assist you in discovering the appropriate payment
-          solution for your business. We are able to help regardless of how your
-          customers wish to pay.
-        </p>
+        <div className="flex w-[95vw] justify-center">
+          <p className="text-white text-sm md:text-xl max-w-xl mt-6 text-center">
+            We are able to assist you in discovering the appropriate payment
+            solution for your business. We are able to help regardless of how
+            your customers wish to pay.
+          </p>
+        </div>
       </Vortex>
     </div>
   );

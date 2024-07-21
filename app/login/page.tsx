@@ -6,21 +6,16 @@ import readUserSession from "@/lib/actions";
 export default async function LoginPage() {
   const { data } = await readUserSession();
 
-  if (data.session) {
-    return redirect("/personal");
-  }
+  // if (data.session) {
+  //   return redirect("/personal");
+  // }
   return (
     <main className="bg-black h-screen flex justify-center items-center">
-      {/* <form>
-        <label htmlFor="fullname">Name:</label>
-        <input id="fullname" name="fullname" type="text" required />
-        <label htmlFor="email">Email:</label>
-        <input id="email" name="email" type="email" required />
-        <label htmlFor="password">Password:</label>
-        <input id="password" name="password" type="password" required />
-        <button formAction={login}>Log in</button>
-        <button formAction={signup}>Sign up</button>
-      </form> */}
+      <h1 className="fixed top-2 left-2 text-center text-zinc-500">
+        Note:- email:testor@gmail.com <br></br> password:1234567 <br></br> OR{" "}
+        <br></br>
+        email:testor2@gmail.com <br></br> password:123
+      </h1>
       <Form />
     </main>
   );

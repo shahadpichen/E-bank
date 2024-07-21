@@ -1,16 +1,7 @@
 import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card } from "@/components/ui/card";
-
-interface Transaction {
-  id: number;
-  created_at: string;
-  created_by: string;
-  money: number;
-  type: string;
-  owner: string;
-  recipient: string;
-}
+import { Transaction } from "@/app/types";
 
 interface Props {
   transactions: Transaction[];
